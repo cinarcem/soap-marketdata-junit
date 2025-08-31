@@ -12,7 +12,6 @@ WORKDIR /app
 
 EXPOSE ${PORT}
 
-# Oluşturulan JAR dosyasını kopyala (target klasöründe oluşur)
 COPY --from=build /app/target/*.jar app.jar
 
 ENV TZ=Europe/Istanbul
