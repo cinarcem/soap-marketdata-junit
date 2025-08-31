@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="https://soap-stocks.up.railway.app"
+           xmlns:tns="https://soap-stocks.up.railway.app"
+           elementFormDefault="qualified">
+
+    <!-- Request -->
+    <xs:element name="GetStockRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="stockSymbol" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Response -->
+    <xs:element name="GetStockResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="isPartialResponse" type="xs:boolean"/>
+                <xs:element name="invalidSymbols" type="xs:string" minOccurs="0"/>
+                <xs:element name="stock" type="tns:Stock" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Stock Type -->
+    <xs:complexType name="Stock">
+        <xs:sequence>
+            <xs:element name="stockSymbol" type="xs:string"/>
+            <xs:element name="latestPrice" type="xs:decimal"/>
+            <xs:element name="dailyChangePct" type="xs:decimal"/>
+            <xs:element name="dailyChangeInTL" type="xs:decimal"/>
+            <xs:element name="tradingVolumeTL" type="xs:decimal"/>
+            <xs:element name="tradeVolumeCount" type="xs:decimal"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>

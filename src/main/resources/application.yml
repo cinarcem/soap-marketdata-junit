@@ -1,0 +1,14 @@
+server:
+  port: ${PORT}
+
+spring:
+  application:
+    name: stocks
+  profiles:
+    active: ${ENVIRONMENT_NAME}
+  devtools:
+    livereload:
+      enabled: false
+    restart:
+      enabled: false
+
